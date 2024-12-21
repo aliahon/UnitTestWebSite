@@ -1,0 +1,96 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "What is Unit Testing?";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Introduction Section -->
+        <div class="col-12 text-center mb-4">
+            <h1 class="text-white p-3 rounded" style="background-color: #106861;">What is Unit Testing?</h1>
+            <p class="lead mt-3">
+                Unit testing is a software testing practice where individual components, or "units," of a program are tested independently to ensure they function as expected.
+            </p>
+            <div class="mt-4">
+                <!-- Local Video Player -->
+                <video controls width="100%" style="max-width: 800px; border: 2px solid #106861; border-radius: 8px;">
+                    <source src="~/videos/u.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+        <!-- Main Content Section -->
+        <div class="col-12">
+            <h2 style="color: #106861;">Key Concepts and Examples</h2>
+            <p>
+                A "unit" typically refers to the smallest testable part of an application, such as a function, method, or class. The goal of unit testing is to verify that each unit performs correctly, which helps in:
+            </p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Identifying bugs early</li>
+                <li class="list-group-item">Simplifying code maintenance</li>
+                <li class="list-group-item">Providing confidence in the overall stability of the code</li>
+            </ul>
+
+            <h3 class="mt-4" style="color: #106861;">Example Code</h3>
+            <pre class="bg-light p-3 rounded">
+<code>
+public int Add(int a, int b)
+{
+    return a + b;
+}
+
+// Unit Test Example
+[TestMethod]
+public void Add_ShouldReturnSum_ForValidInputs()
+{
+    var service = new MathService();
+    var result = service.Add(2, 3);
+    Assert.AreEqual(5, result);
+}
+</code>
+            </pre>
+
+            <h3 class="mt-4" style="color: #106861;">Why is Unit Testing Important?</h3>
+            <p>
+                Unit testing is a fundamental practice in software development, providing numerous benefits that contribute to the quality, maintainability, and reliability of applications. These benefits include:
+            </p>
+            <ol>
+                <li>Early Bug Detection</li>
+                <li>Ensures Correct Functionality</li>
+                <li>Simplifies Refactoring</li>
+                <li>Improves Code Design</li>
+                <li>Acts as Documentation</li>
+            </ol>
+
+            <h4 class="mt-4" style="color: #106861;">Detailed Example: Login Service</h4>
+            <pre class="bg-light p-3 rounded">
+<code>
+public class LoginService
+{
+    public bool Authenticate(string username, string password)
+    {
+        return username == "admin" && password == "password";
+    }
+}
+
+// Unit Test Example
+[TestClass]
+public class LoginServiceTests
+{
+    [TestMethod]
+    public void Authenticate_ShouldReturnTrue_ForValidCredentials()
+    {
+        var service = new LoginService();
+        var result = service.Authenticate("admin", "password");
+        Assert.IsTrue(result);
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+</div>

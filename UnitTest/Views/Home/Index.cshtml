@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+}
+
+<div class="text-center">
+    <h1 class="mb-4">Welcome to the Unit Testing Website</h1>
+    <p class="lead mb-4">Learn about unit testing and take the quiz to test your knowledge.</p>
+
+    <ul class="list-group list-group-flush mx-auto" style="max-width: 600px;">
+        <li class="list-group-item bg-light">
+            <a href="@Url.Action("WhatIsUnitTesting", "Home")" class="text-decoration-none text-dark">
+                What is Unit Testing and Why is it Important?
+            </a>
+        </li>
+        <li class="list-group-item bg-light">
+            <a href="@Url.Action("HowToWriteTests", "Home")" class="text-decoration-none text-dark">
+                How to Write Effective Unit Tests
+            </a>
+        </li>
+        <li class="list-group-item bg-light">
+            <a href="@Url.Action("BenefitsChallenges", "Home")" class="text-decoration-none text-dark">
+                Benefits, Challenges
+            </a>
+        </li>
+        <li class="list-group-item bg-light">
+            <a href="@Url.Action("Quiz", "Home")" class="text-decoration-none text-dark">
+                Take the Quiz
+            </a>
+        </li>
+    </ul>
+</div>

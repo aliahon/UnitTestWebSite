@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Quiz";
+}
+
+<h1>Unit Testing Quiz</h1>
+<form method="post" action="@Url.Action("SubmitQuiz", "Home")">
+    <p>1. What is unit testing?</p>
+    <input type="text" name="answer1" />
+
+    <p>2. Why is unit testing important?</p>
+    <input type="text" name="answer2" />
+
+    <p>3. What is a challenge of unit testing?</p>
+    <input type="text" name="answer3" />
+
+    <button type="submit">Submit</button>
+</form>

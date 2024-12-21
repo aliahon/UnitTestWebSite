@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Quiz Result";
+}
+
+<h1>Your Score</h1>
+<p>You scored @ViewBag.Score out of 3!</p>
+<a href="@Url.Action("Quiz", "Home")">Try Again</a>
