@@ -2,79 +2,160 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Quiz";
 }
-<head>
-    <style>
-        body {
-            background-color: #f4f4f9;
-        }
 
-        .quiz-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+<div class="container">
+    <div class="quiz-container">
+        <h2 class="quiz-header">Unit Testing in .NET Quiz</h2>
 
-        .quiz-header {
-            color: #106861;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .quiz-button {
-            background-color: #106861;
-            color: white;
-        }
-
-            .quiz-button:hover {
-                background-color: #065b44;
-            }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="quiz-container">
-            <h2 class="quiz-header">Unit Testing in .NET Quiz</h2>
-           
-            <form method="post" id="quizForm">
-                    <div class="mb-3">
-                        <label class="form-label">Question 1:</label>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question1" value="A" id="question1-optionA">
-                                <label class="form-check-label" for="question@i-optionA">
-                                <!-- Option A -->
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question1" value="B" id="question1-optionB">
-                                <label class="form-check-label" for="question1-optionB">
-                                    <!-- Option B -->
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question1" value="C" id="question1-optionC">
-                                <label class="form-check-label" for="question1-optionC">
-                                <!-- Option C -->
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question1" value="D" id="question1-optionD">
-                                <label class="form-check-label" for="question1-optionD">
-                                <!-- Option D -->
-                                </label>
-                            </div>
-                        </div>
+        <form method="post" action="/Home/Quiz" id="quizForm">
+            <div class="mb-4">
+                <label class="form-label question-label">
+                    <span>Q1:</span> What is the primary goal of unit testing?
+                </label>
+                <div class="options-container">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="A" id="question1-optionA">
+                        <label class="form-check-label" for="question1-optionA">
+                            To test all the dependencies of an application.
+                        </label>
                     </div>
-
-                <button type="submit" class="btn quiz-button">Submit Quiz</button>
-            </form>
-            <div class="mt-4">
-                @if (ViewBag.Score != null)
-                {
-                    <p>Your Score: @ViewBag.Score/20</p>
-                }
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="B" id="question1-optionB">
+                        <label class="form-check-label" for="question1-optionB">
+                            To verify individual units of a program function correctly.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="C" id="question1-optionC">
+                        <label class="form-check-label" for="question1-optionC">
+                            To ensure the database schema is correct.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="D" id="question1-optionD">
+                        <label class="form-check-label" for="question1-optionD">
+                            To check user interface responsiveness.
+                        </label>
+                    </div>
+                </div>
             </div>
+
+            <!-- Repeat similar structure for other questions -->
+
+            <div class="mb-4">
+                <label class="form-label question-label">
+                    <span>Q2:</span> In unit testing, what is a "unit"?
+                </label>
+                <div class="options-container">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="A" id="question2-optionA">
+                        <label class="form-check-label" for="question2-optionA">
+                            The entire application.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="B" id="question2-optionB">
+                        <label class="form-check-label" for="question2-optionB">
+                            A single test case.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="C" id="question2-optionC">
+                        <label class="form-check-label" for="question2-optionC">
+                            The smallest testable part of an application.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="D" id="question2-optionD">
+                        <label class="form-check-label" for="question2-optionD">
+                            A deployment package.
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat for other questions... -->
+
+            <button type="submit" class="btn quiz-button">Submit Quiz</button>
+        </form>
+
+        <div class="mt-4">
+            @if (ViewBag.Score != null)
+            {
+                <p>Your Score: @ViewBag.Score/20</p>
+            }
         </div>
     </div>
-</body>
+</div>
+
+<style>
+    body {
+        background-color: #f4f4f9;
+    }
+
+    .quiz-container {
+        background-color: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quiz-header {
+        color: #106861;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .quiz-button {
+        background-color: #106861;
+        color: white;
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+        .quiz-button:hover {
+            background-color: #065b44;
+        }
+
+    .question-label {
+        font-size: 1.1rem;
+        color: #106861;
+        font-weight: bold;
+    }
+
+    .options-container .form-check {
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .form-check-input {
+        margin-top: 5px;
+        margin-right: 10px;
+    }
+
+    .form-check-label {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .quiz-container .mb-4 {
+        margin-bottom: 20px;
+    }
+
+    .quiz-container .btn {
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    /* Hover effect for the options */
+    .form-check:hover {
+        background-color: #f1f1f1;
+        border-radius: 5px;
+    }
+
+    .form-check-input:checked + .form-check-label {
+        color: #106861;
+        font-weight: bold;
+    }
+</style>

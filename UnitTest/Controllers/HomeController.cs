@@ -55,7 +55,7 @@ namespace UnitTestingWebsite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Quiz(FormCollection form)
+        public ActionResult Quiz(IFormCollection form)
         {
             int score = 0;
 
@@ -72,9 +72,33 @@ namespace UnitTestingWebsite.Controllers
                 }
             }
 
-            // Pass the score to the view
+            // Redirect to QuizResult action with the score
+            return RedirectToAction("QuizResult", new { score = score });
+        }
+
+        public ActionResult QuizResult(int score)
+        {
+            
+            int meanScore = 10; 
+
+            
+            bool qualifiesForCertificate = score >= meanScore;
+
+            
             ViewBag.Score = score;
+            ViewBag.QualifiesForCertificate = qualifiesForCertificate;
+
             return View();
         }
+
+        public ActionResult DownloadCertificate()
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/certificates", "Certificate.pdf");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+            string fileName = "CompletionCertificate.pdf";
+
+            return File(fileBytes, "application/pdf", fileName);
+        }
+
     }
 }

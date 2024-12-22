@@ -1,8 +1,66 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Quiz Result";
+    bool qualifiesForCertificate = ViewBag.QualifiesForCertificate;
 }
 
-<h1>Your Score</h1>
-<p>You scored @ViewBag.Score out of 3!</p>
-<a href="@Url.Action("Quiz", "Home")">Try Again</a>
+<div class="container mt-5">
+    <div class="score-box p-4 rounded shadow">
+        <h2 class="text-center" style="color: #106861;">Your Quiz Result</h2>
+        <p class="text-center" style="font-size: 1.25rem;">Score: <strong>@ViewBag.Score</strong> out of 20</p>
+
+        @if (qualifiesForCertificate)
+        {
+            <div class="result-message text-center mt-4">
+                <p class="congratulations" style="font-size: 1.2rem; color: #106861; font-weight: bold;">
+                    Congratulations! You have scored above the mean.
+                </p>
+                <a href="@Url.Action("DownloadCertificate")" class="btn btn-primary btn-lg">Download Completion Certificate</a>
+            </div>
+        }
+        else
+        {
+            <div class="result-message text-center mt-4">
+                <p class="keep-practicing" style="font-size: 1.2rem; color: #ff7043;">
+                    Good effort! Keep practicing to improve your score.
+                </p>
+            </div>
+        }
+    </div>
+    <!-- Retry Option (if needed) -->
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Quiz")" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-clockwise"></i> Try Again
+        </a>
+    </div>
+</div>
+
+@* Optionally, add inline style for page-specific customizations *@
+@* Or you can define these styles in a custom CSS file *@
+<style>
+    .score-box {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #106861;
+        border-color: #106861;
+    }
+
+        .btn-primary:hover {
+            background-color: #0d574d;
+            border-color: #0d574d;
+        }
+
+    .congratulations {
+        color: #106861;
+        font-weight: bold;
+    }
+
+    .keep-practicing {
+        color: #ff7043;
+    }
+</style>

@@ -13,4 +13,8 @@
     <None Remove="videos\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\certificates\" />
+  </ItemGroup>
+
 </Project>
