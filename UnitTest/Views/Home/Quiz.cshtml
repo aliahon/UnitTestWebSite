@@ -1,17 +1,80 @@
 ﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Quiz";
 }
+<head>
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
 
-<h1>Unit Testing Quiz</h1>
-<form method="post" action="@Url.Action("SubmitQuiz", "Home")">
-    <p>1. What is unit testing?</p>
-    <input type="text" name="answer1" />
+        .quiz-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-    <p>2. Why is unit testing important?</p>
-    <input type="text" name="answer2" />
+        .quiz-header {
+            color: #106861;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    <p>3. What is a challenge of unit testing?</p>
-    <input type="text" name="answer3" />
+        .quiz-button {
+            background-color: #106861;
+            color: white;
+        }
 
-    <button type="submit">Submit</button>
-</form>
+            .quiz-button:hover {
+                background-color: #065b44;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <h2 class="quiz-header">Unit Testing in .NET Quiz</h2>
+           
+            <form method="post" id="quizForm">
+                    <div class="mb-3">
+                        <label class="form-label">Question 1:</label>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="A" id="question1-optionA">
+                                <label class="form-check-label" for="question@i-optionA">
+                                <!-- Option A -->
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="B" id="question1-optionB">
+                                <label class="form-check-label" for="question1-optionB">
+                                    <!-- Option B -->
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="C" id="question1-optionC">
+                                <label class="form-check-label" for="question1-optionC">
+                                <!-- Option C -->
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="D" id="question1-optionD">
+                                <label class="form-check-label" for="question1-optionD">
+                                <!-- Option D -->
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                <button type="submit" class="btn quiz-button">Submit Quiz</button>
+            </form>
+            <div class="mt-4">
+                @if (ViewBag.Score != null)
+                {
+                    <p>Your Score: @ViewBag.Score/20</p>
+                }
+            </div>
+        </div>
+    </div>
+</body>

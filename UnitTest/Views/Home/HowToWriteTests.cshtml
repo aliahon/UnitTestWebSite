@@ -3,123 +3,23 @@
     ViewBag.Title = "How to Write Unit Tests";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+<h2>Unit Test Guidelines</h2>
+<div class="test-guidelines">
+    <ul>
+        <li><strong>Test One Thing at a Time:</strong> Ensure each test verifies a single behavior. This makes tests easier to maintain and debug.</li>
+        <li><strong>Use Descriptive Test Names:</strong> A good unit test name should clearly indicate the expected behavior.</li>
+        <li><strong>Mock Dependencies:</strong> Isolate the unit under test by mocking or stubbing external dependencies like databases or web services.</li>
+        <li><strong>Test Edge Cases:</strong> Ensure your application can handle a wide range of inputs, including extreme and invalid values.</li>
+        <li><strong>Make Tests Repeatable and Independent:</strong> Tests should be independent of external states and give the same result each time.</li>
+        <li><strong>Keep Tests Small and Focused:</strong> Tests should focus on specific functionality and be quick to run.</li>
+    </ul>
+</div>
 
-        header {
-            background-color: #106861;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+<h2>Example: Testing a Square Function</h2>
+<p>Here is a simple example of unit testing a method that calculates the square of a number in .NET using xUnit:</p>
 
-        .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #106861;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        p {
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        .video-container {
-            margin: 30px 0;
-            text-align: center;
-        }
-
-            .video-container iframe {
-                width: 80%;
-                height: 400px;
-            }
-
-        .test-guidelines {
-            background-color: #e9f7f2;
-            border-left: 5px solid #106861;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-            .test-guidelines ul {
-                list-style-type: disc;
-                padding-left: 20px;
-            }
-
-            .test-guidelines li {
-                margin-bottom: 10px;
-            }
-
-        footer {
-            background-color: #106861;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .example-code {
-            background-color: #f7f7f7;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-family: Consolas, monospace;
-            color: #106861;
-            overflow-x: auto;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>How to Write Effective Unit Tests</h1>
-        <p>Learn the best practices for writing maintainable, meaningful, and easy-to-understand unit tests in .NET.</p>
-    </header>
-
-    <div class="container">
-        <div class="video-container">
-            <h2>Introduction Video</h2>
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-
-        <h2>Unit Test Guidelines</h2>
-        <div class="test-guidelines">
-            <ul>
-                <li><strong>Test One Thing at a Time:</strong> Ensure each test verifies a single behavior. This makes tests easier to maintain and debug.</li>
-                <li><strong>Use Descriptive Test Names:</strong> A good unit test name should clearly indicate the expected behavior.</li>
-                <li><strong>Mock Dependencies:</strong> Isolate the unit under test by mocking or stubbing external dependencies like databases or web services.</li>
-                <li><strong>Test Edge Cases:</strong> Ensure your application can handle a wide range of inputs, including extreme and invalid values.</li>
-                <li><strong>Make Tests Repeatable and Independent:</strong> Tests should be independent of external states and give the same result each time.</li>
-                <li><strong>Keep Tests Small and Focused:</strong> Tests should focus on specific functionality and be quick to run.</li>
-            </ul>
-        </div>
-
-        <h2>Example: Testing a Square Function</h2>
-        <p>Here is a simple example of unit testing a method that calculates the square of a number in .NET using xUnit:</p>
-
-        <div class="example-code">
-            <pre>
+<div class="example-code">
+    <pre>
 public class MathOperations
 {
     public int Square(int number)
@@ -146,14 +46,7 @@ public class MathOperationsTests
     }
 }
         </pre>
-        </div>
+</div>
 
-        <p>In this example, the test verifies that the Square method correctly calculates the square of the number.</p>
+<p>In this example, the test verifies that the Square method correctly calculates the square of the number.</p>
     </div>
-
-    <footer>
-        <p>&copy; 2024 How to Write Effective Unit Tests</p>
-    </footer>
-
-</body>
-</html>

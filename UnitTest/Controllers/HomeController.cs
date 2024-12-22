@@ -24,21 +24,57 @@ namespace UnitTestingWebsite.Controllers
             return View();
         }
 
-        public IActionResult Quiz()
+        private static readonly Dictionary<int, string> CorrectAnswers = new Dictionary<int, string>
+    {
+        { 1, "B" },
+        { 2, "C" },
+        { 3, "A" },
+        { 4, "B" },
+        { 5, "C" },
+        { 6, "C" },
+        { 7, "D" },
+        { 8, "B" },
+        { 9, "B" },
+        { 10, "B" },
+        { 11, "B" },
+        { 12, "B" },
+        { 13, "B" },
+        { 14, "B" },
+        { 15, "B" },
+        { 16, "B" },
+        { 17, "C" },
+        { 18, "B" },
+        { 19, "B" },
+        { 20, "C" }
+    };
+
+        [HttpGet]
+        public ActionResult Quiz()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult SubmitQuiz(string answer1, string answer2, string answer3)
+        public ActionResult Quiz(FormCollection form)
         {
-            ViewBag.Score = 0;
+            int score = 0;
 
-            if (answer1 == "CorrectAnswer1") ViewBag.Score++;
-            if (answer2 == "CorrectAnswer2") ViewBag.Score++;
-            if (answer3 == "CorrectAnswer3") ViewBag.Score++;
+            // Loop through all the questions
+            for (int i = 1; i <= 20; i++)
+            {
+                // Get the user's answer
+                var userAnswer = form["question" + i];
 
-            return View("QuizResult");
+                // Compare user's answer with the correct answer
+                if (userAnswer == CorrectAnswers[i])
+                {
+                    score++;
+                }
+            }
+
+            // Pass the score to the view
+            ViewBag.Score = score;
+            return View();
         }
     }
 }

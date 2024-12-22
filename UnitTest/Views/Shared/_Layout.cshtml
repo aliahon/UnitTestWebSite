@@ -12,6 +12,7 @@
         }
 
         body {
+            margin-top:60px;
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
         }
@@ -19,26 +20,70 @@
         header {
             background-color: var(--main-color);
             color: var(--text-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10; /* Ensures header is above the sidebar */
         }
 
-        nav {
+        .sidebar {
             background-color: var(--main-color);
+            color: var(--text-light);
+            padding: 20px;
+            border-radius: 8px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            height: calc(100% - 60px);
+            width: 250px;
+            padding-top: 20px;
+            overflow-y: auto;
         }
 
-            nav .nav-link {
-                color: var(--text-light);
-                font-weight: 500;
-                padding: 10px;
-                border-radius: 5px;
-                transition: background-color 0.3s ease, color 0.3s ease;
+        .contents-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        nav ul {
+            padding-left: 0;
+        }
+
+            nav ul li {
+                list-style: none;
+                margin-bottom: 10px;
             }
 
-                nav .nav-link:hover {
-                    background-color: #0b4f47;
-                    color: #ffffff;
-                }
+        .main-link {
+            color: var(--text-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .main-link:hover {
+                color: #c4f0e3;
+            }
+
+        .sub-link {
+            color: #d6f8f1;
+            text-decoration: none;
+            font-weight: 500;
+            padding-left: 10px;
+            display: block;
+            margin-top: 5px;
+            transition: color 0.3s ease;
+        }
+
+            .sub-link:hover {
+                color: #b0e0d6;
+            }
 
         main {
+            margin-left: 270px; /* Adjust margin to match the sidebar width */
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
@@ -48,6 +93,7 @@
         footer {
             background-color: var(--main-color);
             color: var(--text-light);
+            margin-left: 270px; /* Adjust margin to match the sidebar width */
         }
     </style>
 </head>
@@ -62,13 +108,45 @@
         <div class="row">
             <!-- Left Sidebar -->
             <nav class="col-md-3 p-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("WhatIsUnitTesting", "Home")">What is Unit Testing?</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HowToWriteTests", "Home")">How to Write Unit Tests</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("BenefitsChallenges", "Home")">Benefits & Challenges</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Quiz", "Home")">Quiz</a></li>
-                </ul>
+                <div class="sidebar">
+                    <h2 class="contents-title">Contents</h2>
+                    <nav aria-label="Table of Contents">
+                        <ul class="list-unstyled">
+                            
+                            <li>
+                                <a href="@Url.Action("Index", "Home")" class="main-link">Home</a>
+                            </li>
+                            <!-- Main Section: What is Unit Testing -->
+                            <li>
+                                <a href="@Url.Action("WhatIsUnitTesting", "Home")" class="main-link">What is Unit Testing?</a>
+                                <ul>
+                                    <li><a href="#definition" class="sub-link">Definition</a></li>
+                                    <li><a href="#importance" class="sub-link">Importance</a></li>
+                                </ul>
+                            </li>
+                            <!-- Main Section: How to Write Tests -->
+                            <li>
+                                <a href="@Url.Action("HowToWriteTests", "Home")" class="main-link">How to Write Unit Tests</a>
+                                <ul>
+                                    <li><a href="#best-practices" class="sub-link">Best Practices</a></li>
+                                    <li><a href="#tools" class="sub-link">Tools</a></li>
+                                </ul>
+                            </li>
+                            <!-- Main Section: Benefits & Challenges -->
+                            <li>
+                                <a href="@Url.Action("BenefitsChallenges", "Home")" class="main-link">Benefits & Challenges</a>
+                                <ul>
+                                    <li><a href="#advantages" class="sub-link">Advantages</a></li>
+                                    <li><a href="#limitations" class="sub-link">Limitations</a></li>
+                                </ul>
+                            </li>
+                            <!-- Main Section: Quiz -->
+                            <li>
+                                <a href="@Url.Action("Quiz", "Home")" class="main-link">Quiz</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </nav>
 
             <!-- Main Content -->
@@ -77,10 +155,6 @@
             </main>
         </div>
     </div>
-
-    <footer class="text-center py-3 mt-4">
-        <p>&copy; @DateTime.Now.Year Unit Testing Website. All rights reserved.</p>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
