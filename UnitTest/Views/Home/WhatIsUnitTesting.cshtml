@@ -6,14 +6,11 @@
 
 <div class="container mt-5">
         <div class="row">
-            
+            <!-- Introduction Section -->
             <div class="col-12 text-center mb-4">
                 <h1 class="text-white p-3 rounded" style="background-color: #106861;">What is Unit Testing?</h1>
-                <p class="lead mt-3">
-                    Unit testing is a software testing practice where individual components, or "units," of a program are tested independently to ensure they function as expected.
-                </p>
                 <div class="mt-4">
-                    
+                    <!-- Local Video Player -->
                     <video controls width="100%" style="max-width: 800px; border: 2px solid #106861; border-radius: 8px;">
                         <source src="~/videos/u.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -21,154 +18,322 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    <!-- Main Content Section -->
+        <!-- Main Content Section -->
     <div class="row">
         <div class="col-12">
-            <h2 class="text-success">Key Concepts and Examples</h2>
+            <h2 class="text-success" id="definition">
+                Introduction to Unit Testing
+            </h2>
             <p>
-                A "unit" typically refers to the smallest testable part of an application, such as a function, method, or class. The goal of unit testing is to verify that each unit performs correctly, which helps in:
+                Unit testing is a software testing practice where individual components, or
+                ”units,” of a program are tested independently to ensure they function as expected. A ”unit” typically refers to the smallest testable part of an application,
+                such as a function, method, or class. The goal of unit testing is to verify that
+                each unit performs correctly, which helps in identifying bugs early, simplifying
+                code maintenance, and providing confidence in the overall stability of the code.
             </p>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Identifying bugs early</li>
-                <li class="list-group-item">Simplifying code maintenance</li>
-                <li class="list-group-item">Providing confidence in the overall stability of the code</li>
-            </ul>
 
-            <h3 class="mt-4 text-success">Example Code</h3>
+            <h5 class="mt-4 text-success">Example Code</h5>
             <p>
-                A unit test would check if this method correctly adds numbers under various
-                scenarios, such as positive numbers, negative numbers, or zero.
+                Consider a simple function that adds two numbers:
             </p>
             
             <div class="card mb-4">
                 <div class="card-body">
-                    <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-                        <code class="language-csharp">
-                        public int Add(int a, int b)
-                        {
-                            return a + b;
-                        }
-
-                        // Unit Test Example
-                        [TestMethod]
-                        public void Add_ShouldReturnSum_ForValidInputs()
-                        {
-                            var service = new MathService();
-                            var result = service.Add(2, 3);
-                            Assert.AreEqual(5, result);
-                        }
-                        </code>
+                    <pre class="bg-light p-1 rounded" style="font-size:  1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+public int Add(int a, int b)
+{
+    return a + b;
+}
+</code>
                     </pre>
                 </div>
             </div>
 
-            <h3 class="mt-4 text-success">Why is Unit Testing Important?</h3>
             <p>
-                Unit testing is a fundamental practice in software development, providing numerous benefits that contribute to the quality, maintainability, and reliability of applications. Below are some key advantages of unit testing, explained with practical examples using .NET Framework.
+                A unit test would check if this method correctly adds numbers under various
+                scenarios, such as positive numbers, negative numbers, or zero
             </p>
-            <ol class="list-group list-group-numbered">
-                <li class="list-group-item">Early Bug Detection</li>
-                <li class="list-group-item">Ensures Correct Functionality</li>
-                <li class="list-group-item">Simplifies Refactoring</li>
-                <li class="list-group-item">Improves Code Design</li>
-                <li class="list-group-item">Acts as Documentation</li>
-            </ol>
 
-            <h4 class="mt-4 text-success">Detailed Example: Login Service</h4>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-                        <code class="language-csharp">
-                        public class LoginService
-                        {
-                            public bool Authenticate(string username, string password)
-                            {
-                                return username == "admin" && password == "password";
-                            }
-                        }
+            <h2 class="text-success" id="importance">
+                Why is Unit Testing Important?
+            </h2>
+            <p>
+                Unit testing is a fundamental practice in software development, providing numerous benefits that contribute to the quality, maintainability, and reliability
+                of applications. Below are some key advantages of unit testing, explained with
+                practical examples using .NET Framework.
+            </p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Early Bug Detection</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests allow developers to catch bugs as soon as they are introduced.
+                            Since the tests focus on individual parts of the code, any failure can be
+                            traced back to the specific change that caused it.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Suppose you have a MathService class with an Add method:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+public class MathService {
+    public int Add (int a , int b ) {
+    return a + b ;
+    }
+}
+</code>
+            </pre>
+                            </div>
+                        </div>
+                        <p>
+                            If you modify the method to handle additional scenarios, such as parsing strings:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+public int Add ( string a , string b ) {
+    return int . Parse ( a ) + int . Parse ( b );
+}
+</code>
+            </pre>
+                            </div>
+                        </div>
+                        <p>
+                            A unit test using MSTest ensures that the changes don’t introduce
+                            bugs:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    [ TestClass ]
+public class MathServiceTests {
+    [ TestMethod ]
+    public void Add_ShouldReturnSum_ForValidInputs () {
+        var service = new MathService ();
+        var result = service . Add ("2", "3");
+        Assert . AreEqual (5 , result );
+    }
+}
 
-                        // Unit Test Example
-                        [TestClass]
-                        public class LoginServiceTests
-                        {
-                            [TestMethod]
-                            public void Authenticate_ShouldReturnTrue_ForValidCredentials()
-                            {
-                                var service = new LoginService();
-                                var result = service.Authenticate("admin", "password");
-                                Assert.IsTrue(result);
-                            }
-                        }
-                        </code>
-                    </pre>
-                </div>
-            </div>
+</code>
+            </pre>
+                            </div>
+                        </div>
+                        <p>
+                            If int.Parse throws an exception for invalid input, the test fails immediately, pinpointing the issue.
+                        </p>
+                    </div>
+                </li>
 
-            <h3 class="mt-4 text-success">Detailed Example: Discount Calculator</h3>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-                        <code class="language-csharp">
-                        public class DiscountCalculator
-                        {
-                            public decimal CalculateDiscount(string customerType, decimal amount)
-                            {
-                                return customerType == "Premium" ? amount * 0.2m : amount * 0.1m;
-                            }
-                        }
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Ensures Correct Functionality</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests provide a safety net to ensure that the code works as expected and behaves consistently under various conditions. This helps prevent regressions, where previously working
+                            code breaks due to changes in other parts of the system.
+                        </p>
+                        <h5 class="mt-4 text-success">Example</h5>
+                        <p> Consider a DiscountCalculator class:</p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+public class DiscountCalculator {
+    public decimal CalculateDiscount ( string customerType , decimal amount ) {
+        return customerType == " Premium " ? amount * 0.2 m : amount * 0.1 m ;
+    }
+}
 
-                        // Unit Test Example
-                        [TestFixture]
-                        public class DiscountCalculatorTests
-                        {
-                            [TestCase("Premium", 100, 20)]
-                            [TestCase("Regular", 100, 10)]
-                            public void CalculateDiscount_ShouldReturnCorrectDiscount(string customerType, decimal amount, decimal expected)
-                            {
-                                var calculator = new DiscountCalculator();
-                                var result = calculator.CalculateDiscount(customerType, amount);
-                                Assert.AreEqual(expected, result);
-                            }
-                        }
-                        </code>
-                    </pre>
-                </div>
-            </div>
+</code>
+            </pre>
+                            </div>
+                        </div>
+                        <p>
+                            A unit test using <strong>NUnit</strong> ensures this behavior:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+        [ TestFixture ]
+    public class DiscountCalculatorTests {
+        [ TestCase (" Premium ", 100 , 20)]
+        [ TestCase (" Regular ", 100 , 10)]
+        public void CalculateDiscount_ShouldReturnCorrectDiscount ( string customerType , decimal amount , decimal expected ) {
+            var calculator = new DiscountCalculator ();
+            var result = calculator . CalculateDiscount ( customerType , amount );
+            Assert . AreEqual ( expected , result );
+        }
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+                        <p>
+                            If a future change alters the calculation logic unintentionally, the test
+                            will fail and highlight the issue
+                        </p>
+                    </div>
+                </li>
 
-            <h3 class="mt-4 text-success">Detailed Example: Math Service</h3>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-                        <code class="language-csharp">
-                        public class MathService
-                        {
-                            public int Add(string a, string b)
-                            {
-                                return int.Parse(a) + int.Parse(b);
-                            }
-                        }
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Simplifies Refactoring</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests give developers confidence when
+                            refactoring code. As long as the unit tests pass after changes, developers
+                            can be sure that the code continues to work as intended. This is especially
+                            important in large applications or projects with multiple developers.
+                        </p>
+                    </div>
+                </li>
 
-                        // Unit Test Example
-                        [TestClass]
-                        public class MathServiceTests
-                        {
-                            [TestMethod]
-                            public void Add_ShouldReturnSum_ForValidInputs()
-                            {
-                                var service = new MathService();
-                                var result = service.Add("2", "3");
-                                Assert.AreEqual(5, result);
-                            }
-                        }
-                        </code>
-                    </pre>
-                </div>
-            </div>
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success"> Improves Code Design</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Writing unit tests encourages developers to
+                            write modular, well-structured code. Testing is easier if the code is broken
+                            into smaller, isolated components. It forces developers to think about the
+                            design of their software before they begin writing it, leading to cleaner,
+                            more maintainable code.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Acts as Documentation</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests serve as documentation for the
+                            expected behavior of a method or class. New developers can look at the
+                            tests to quickly understand what each part of the application is supposed
+                            to do.
+                        </p>
+                        <h5 class="mt-4 text-success">Example</h5>
+                        <p>
+                            A LoginService class might handle user authentication:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    public class LoginService {
+        public bool Authenticate ( string username , string password ) {
+            // Simulated authentication logic
+            return username == " admin " && password == " password ";
+        }
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+
+                        <p>
+                            A unit test using <strong>MSTest </strong>documents the behavior:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    [ TestClass ]
+public class LoginServiceTests {
+    [ TestMethod ]
+    public void Authenticate_ShouldReturnTrue_ForValidCredentials() {
+        var service = new LoginService();
+        var result = service . Authenticate("admin", "password");
+        Assert.IsTrue( result );
+    }
+
+    [ TestMethod ]
+    public void Authenticate_ShouldReturnFalse_ForInvalidCredentials() {
+        var service = new LoginService();
+        var result = service.Authenticate("user", "wrongpassword");
+        Assert . IsFalse( result );
+    }
+}
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+<script>
+    // Function to toggle visibility of the content and change the indicator
+    function toggleContent(headerRow) {
+        const contentDiv = headerRow.nextElementSibling;
+        const indicator = headerRow.querySelector('.toggle-indicator');
 
-<!-- Optional Syntax Highlighting with Prism.js or Highlight.js -->
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+        if (contentDiv.style.display === "none" || contentDiv.style.display === "") {
+            contentDiv.style.display = "block";  // Show content
+            indicator.textContent = "−";  // Change indicator to minus
+        } else {
+            contentDiv.style.display = "none";  // Hide content
+            indicator.textContent = "+";  // Change indicator to plus
+        }
+    }
+</script>
+
+<style>
+
+    /* Style for the list items */
+    ul.list-group {
+        list-style: none; /* Remove default list bullets */
+        padding-left: 0; /* Remove default padding */
+    }
+
+        /* Style for the header row (only h3 and indicator) */
+        ul.list-group > li > .header-row {
+            display: flex; /* Use flexbox to align items in a row */
+            align-items: center; /* Vertically center the items */
+            cursor: pointer; /* Make it appear clickable */
+            margin-bottom: 10px; /* Add spacing between list items */
+        }
+
+            ul.list-group > li > .header-row > .toggle-indicator {
+                margin-left: auto; /* Push the indicator to the right */
+                font-size: 1.5em; /* Larger indicator */
+                color: #106861; /* Match the theme color */
+            }
+
+        /* Style for the content */
+        ul.list-group > li > .content {
+            display: none; /* Hide content by default */
+            margin-left: 40px; /* Indent content */
+            margin-top: 10px;
+        }
+
+        /* Smooth transition for the content */
+        ul.list-group > li > .content {
+            transition: all 0.3s ease-in-out; /* Adds smooth transition */
+        }
+
+
+
+</style>

@@ -7,7 +7,7 @@ namespace UnitTestingWebsite.Controllers
         public IActionResult Index()
         {
             ViewBag.PreviousPage = null;
-            ViewBag.NextPage = Url.Action("HowToWriteTests", "Home");
+            ViewBag.NextPage = Url.Action("WhatIsUnitTesting", "Home");
             return View();
         }
 
@@ -61,7 +61,6 @@ namespace UnitTestingWebsite.Controllers
         {
             ViewBag.PreviousPage = Url.Action("BenefitsChallenges", "Home");
             ViewBag.NextPage = null;
-            return View();
             return View();
         }
 

@@ -228,12 +228,12 @@
         </div>
     </div>
     <footer class="d-flex justify-content-between align-items-center p-3">
-        <a href="@(string.IsNullOrEmpty(ViewBag.PreviousPage) ? Url.Action("Index", "Home") : ViewBag.PreviousPage)"
+        <a href="@(string.IsNullOrEmpty(ViewBag.PreviousPage) ? "#" : ViewBag.PreviousPage)"
            class="btn btn-secondary ml-64"
         @(string.IsNullOrEmpty(ViewBag.PreviousPage) ? "disabled" : "")>
             Go Back
         </a>
-        <a href="@(string.IsNullOrEmpty(ViewBag.NextPage) ? Url.Action("Index", "Home") : ViewBag.NextPage)"
+        <a href="@(string.IsNullOrEmpty(ViewBag.NextPage) ? "#" : ViewBag.NextPage)"
            class="btn btn-primary"
         @(string.IsNullOrEmpty(ViewBag.NextPage) ? "disabled" : "")>
             Next
