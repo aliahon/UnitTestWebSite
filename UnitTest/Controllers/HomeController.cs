@@ -6,21 +6,29 @@ namespace UnitTestingWebsite.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.PreviousPage = null;
+            ViewBag.NextPage = Url.Action("HowToWriteTests", "Home");
             return View();
         }
 
-        public IActionResult WhatIsUnitTesting()
+        public ActionResult WhatIsUnitTesting()
         {
+            ViewBag.PreviousPage = Url.Action("Index", "Home");
+            ViewBag.NextPage = Url.Action("HowToWriteTests", "Home");
             return View();
         }
 
-        public IActionResult HowToWriteTests()
+        public ActionResult HowToWriteTests()
         {
+            ViewBag.PreviousPage = Url.Action("WhatIsUnitTesting", "Home");
+            ViewBag.NextPage = Url.Action("BenefitsChallenges", "Home");
             return View();
         }
 
-        public IActionResult BenefitsChallenges()
+        public ActionResult BenefitsChallenges()
         {
+            ViewBag.PreviousPage = Url.Action("HowToWriteTests", "Home");
+            ViewBag.NextPage = Url.Action("Quiz", "Home");
             return View();
         }
 
@@ -51,6 +59,9 @@ namespace UnitTestingWebsite.Controllers
         [HttpGet]
         public ActionResult Quiz()
         {
+            ViewBag.PreviousPage = Url.Action("BenefitsChallenges", "Home");
+            ViewBag.NextPage = null;
+            return View();
             return View();
         }
 

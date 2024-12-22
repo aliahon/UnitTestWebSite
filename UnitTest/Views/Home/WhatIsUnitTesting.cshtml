@@ -6,14 +6,14 @@
 
 <div class="container mt-5">
         <div class="row">
-            <!-- Introduction Section -->
+            
             <div class="col-12 text-center mb-4">
                 <h1 class="text-white p-3 rounded" style="background-color: #106861;">What is Unit Testing?</h1>
                 <p class="lead mt-3">
                     Unit testing is a software testing practice where individual components, or "units," of a program are tested independently to ensure they function as expected.
                 </p>
                 <div class="mt-4">
-                    <!-- Local Video Player -->
+                    
                     <video controls width="100%" style="max-width: 800px; border: 2px solid #106861; border-radius: 8px;">
                         <source src="~/videos/u.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -22,8 +22,7 @@
             </div>
         </div>
     </div>
-    <!-- Main Content Section -->
-        <!-- Main Content Section -->
+
     <div class="row">
         <div class="col-12">
             <h2 class="text-success">Key Concepts and Examples</h2>
@@ -45,21 +44,21 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-<code class="language-csharp">
-public int Add(int a, int b)
-{
-    return a + b;
-}
+                        <code class="language-csharp">
+                        public int Add(int a, int b)
+                        {
+                            return a + b;
+                        }
 
-// Unit Test Example
-[TestMethod]
-public void Add_ShouldReturnSum_ForValidInputs()
-{
-    var service = new MathService();
-    var result = service.Add(2, 3);
-    Assert.AreEqual(5, result);
-}
-</code>
+                        // Unit Test Example
+                        [TestMethod]
+                        public void Add_ShouldReturnSum_ForValidInputs()
+                        {
+                            var service = new MathService();
+                            var result = service.Add(2, 3);
+                            Assert.AreEqual(5, result);
+                        }
+                        </code>
                     </pre>
                 </div>
             </div>
@@ -80,28 +79,28 @@ public void Add_ShouldReturnSum_ForValidInputs()
             <div class="card mb-4">
                 <div class="card-body">
                     <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-<code class="language-csharp">
-public class LoginService
-{
-    public bool Authenticate(string username, string password)
-    {
-        return username == "admin" && password == "password";
-    }
-}
+                        <code class="language-csharp">
+                        public class LoginService
+                        {
+                            public bool Authenticate(string username, string password)
+                            {
+                                return username == "admin" && password == "password";
+                            }
+                        }
 
-// Unit Test Example
-[TestClass]
-public class LoginServiceTests
-{
-    [TestMethod]
-    public void Authenticate_ShouldReturnTrue_ForValidCredentials()
-    {
-        var service = new LoginService();
-        var result = service.Authenticate("admin", "password");
-        Assert.IsTrue(result);
-    }
-}
-</code>
+                        // Unit Test Example
+                        [TestClass]
+                        public class LoginServiceTests
+                        {
+                            [TestMethod]
+                            public void Authenticate_ShouldReturnTrue_ForValidCredentials()
+                            {
+                                var service = new LoginService();
+                                var result = service.Authenticate("admin", "password");
+                                Assert.IsTrue(result);
+                            }
+                        }
+                        </code>
                     </pre>
                 </div>
             </div>
@@ -110,29 +109,29 @@ public class LoginServiceTests
             <div class="card mb-4">
                 <div class="card-body">
                     <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-<code class="language-csharp">
-public class DiscountCalculator
-{
-    public decimal CalculateDiscount(string customerType, decimal amount)
-    {
-        return customerType == "Premium" ? amount * 0.2m : amount * 0.1m;
-    }
-}
+                        <code class="language-csharp">
+                        public class DiscountCalculator
+                        {
+                            public decimal CalculateDiscount(string customerType, decimal amount)
+                            {
+                                return customerType == "Premium" ? amount * 0.2m : amount * 0.1m;
+                            }
+                        }
 
-// Unit Test Example
-[TestFixture]
-public class DiscountCalculatorTests
-{
-    [TestCase("Premium", 100, 20)]
-    [TestCase("Regular", 100, 10)]
-    public void CalculateDiscount_ShouldReturnCorrectDiscount(string customerType, decimal amount, decimal expected)
-    {
-        var calculator = new DiscountCalculator();
-        var result = calculator.CalculateDiscount(customerType, amount);
-        Assert.AreEqual(expected, result);
-    }
-}
-</code>
+                        // Unit Test Example
+                        [TestFixture]
+                        public class DiscountCalculatorTests
+                        {
+                            [TestCase("Premium", 100, 20)]
+                            [TestCase("Regular", 100, 10)]
+                            public void CalculateDiscount_ShouldReturnCorrectDiscount(string customerType, decimal amount, decimal expected)
+                            {
+                                var calculator = new DiscountCalculator();
+                                var result = calculator.CalculateDiscount(customerType, amount);
+                                Assert.AreEqual(expected, result);
+                            }
+                        }
+                        </code>
                     </pre>
                 </div>
             </div>
@@ -141,28 +140,28 @@ public class DiscountCalculatorTests
             <div class="card mb-4">
                 <div class="card-body">
                     <pre class="bg-light p-3 rounded" style="font-size: 1.1em; white-space: pre-wrap;">
-<code class="language-csharp">
-public class MathService
-{
-    public int Add(string a, string b)
-    {
-        return int.Parse(a) + int.Parse(b);
-    }
-}
+                        <code class="language-csharp">
+                        public class MathService
+                        {
+                            public int Add(string a, string b)
+                            {
+                                return int.Parse(a) + int.Parse(b);
+                            }
+                        }
 
-// Unit Test Example
-[TestClass]
-public class MathServiceTests
-{
-    [TestMethod]
-    public void Add_ShouldReturnSum_ForValidInputs()
-    {
-        var service = new MathService();
-        var result = service.Add("2", "3");
-        Assert.AreEqual(5, result);
-    }
-}
-</code>
+                        // Unit Test Example
+                        [TestClass]
+                        public class MathServiceTests
+                        {
+                            [TestMethod]
+                            public void Add_ShouldReturnSum_ForValidInputs()
+                            {
+                                var service = new MathService();
+                                var result = service.Add("2", "3");
+                                Assert.AreEqual(5, result);
+                            }
+                        }
+                        </code>
                     </pre>
                 </div>
             </div>

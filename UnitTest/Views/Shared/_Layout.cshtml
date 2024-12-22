@@ -24,16 +24,49 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10; /* Ensures header is above the sidebar */
+            z-index: 10; 
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            header .container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        .header-content {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        header .logo {
+            position: absolute;
+            left: 20px; /* Adjust to position the logo at the left corner */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 70px;
+            height: 70px;
+            margin-top: 10px;
         }
 
         .sidebar {
             background-color: var(--main-color);
             color: var(--text-light);
             padding: 20px;
-            border-radius: 8px;
             position: fixed;
-            top: 60px;
+            top: 80px;
             left: 0;
             height: calc(100% - 60px);
             width: 250px;
@@ -88,22 +121,58 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 80px;
         }
 
         footer {
-            background-color: var(--main-color);
-            color: var(--text-light);
-            margin-left: 270px; /* Adjust margin to match the sidebar width */
+         
+            position: fixed;
+            bottom: 0;
+            left: 250px;
+            width: 80%;
+            padding: 10px 20px;
         }
+
+            footer a {
+                color: var(--text-light);
+                text-decoration: none;
+                font-weight: bold;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                footer a.btn {
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                }
+
+                footer a.btn-secondary {
+                    background-color: var(--main-color);
+                    color: var(--text-light);
+                }
+
+                    footer a.btn-secondary:hover {
+                        background-color: #b0e0d6;
+                        color: var(--main-color);
+                    }
+
+                footer a.btn-primary {
+                    background-color: var(--main-color);
+                    color: var(--text-light);
+                }
+
+                    footer a.btn-primary:hover {
+                        background-color: #b0e0d6;
+                        color: var(--main-color);
+                    }
     </style>
 </head>
 <body>
     <header class="p-3 mb-4">
-        <div class="container d-flex align-items-center">
-            <h1 class="h3 d-flex align-items-center">
-                <img src="~/imgs/logosansbachground.png" alt="Logo" class="me-2" style="width: 60px; height: 60px;">
-                Unit Testing Website
-            </h1>
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="header-content">
+                <img src="~/imgs/logosansbachground.png" alt="Logo" class="logo">
+                <h1 class="text-center">Unit Testing Website</h1>
+            </div>
         </div>
     </header>
 
@@ -123,24 +192,24 @@
                             <li>
                                 <a href="@Url.Action("WhatIsUnitTesting", "Home")" class="main-link">What is Unit Testing?</a>
                                 <ul>
-                                    <li><a href="#definition" class="sub-link">Definition</a></li>
-                                    <li><a href="#importance" class="sub-link">Importance</a></li>
+                                    <li><a href="@Url.Action("WhatIsUnitTesting", "Home")#definition" class="sub-link">Definition</a></li>
+                                    <li><a href="@Url.Action("WhatIsUnitTesting", "Home")#importance" class="sub-link">Importance</a></li>
                                 </ul>
                             </li>
                             <!-- Main Section: How to Write Tests -->
                             <li>
                                 <a href="@Url.Action("HowToWriteTests", "Home")" class="main-link">How to Write Unit Tests</a>
                                 <ul>
-                                    <li><a href="#best-practices" class="sub-link">Best Practices</a></li>
-                                    <li><a href="#tools" class="sub-link">Tools</a></li>
+                                    <li><a href="@Url.Action("HowToWriteTests", "Home")#best-practices" class="sub-link">Best Practices</a></li>
+                                    <li><a href="@Url.Action("HowToWriteTests", "Home")#tools" class="sub-link">Tools</a></li>
                                 </ul>
                             </li>
                             <!-- Main Section: Benefits & Challenges -->
                             <li>
                                 <a href="@Url.Action("BenefitsChallenges", "Home")" class="main-link">Benefits & Challenges</a>
                                 <ul>
-                                    <li><a href="#advantages" class="sub-link">Advantages</a></li>
-                                    <li><a href="#limitations" class="sub-link">Limitations</a></li>
+                                    <li><a href="@Url.Action("BenefitsChallenges", "Home")#advantages" class="sub-link">Advantages</a></li>
+                                    <li><a href="@Url.Action("BenefitsChallenges", "Home")#limitations" class="sub-link">Limitations</a></li>
                                 </ul>
                             </li>
                             <!-- Main Section: Quiz -->
@@ -158,6 +227,18 @@
             </main>
         </div>
     </div>
+    <footer class="d-flex justify-content-between align-items-center p-3">
+        <a href="@(string.IsNullOrEmpty(ViewBag.PreviousPage) ? Url.Action("Index", "Home") : ViewBag.PreviousPage)"
+           class="btn btn-secondary ml-64"
+        @(string.IsNullOrEmpty(ViewBag.PreviousPage) ? "disabled" : "")>
+            Go Back
+        </a>
+        <a href="@(string.IsNullOrEmpty(ViewBag.NextPage) ? Url.Action("Index", "Home") : ViewBag.NextPage)"
+           class="btn btn-primary"
+        @(string.IsNullOrEmpty(ViewBag.NextPage) ? "disabled" : "")>
+            Next
+        </a>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
