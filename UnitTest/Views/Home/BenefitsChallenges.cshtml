@@ -3,5 +3,398 @@
     ViewBag.Title = "Benefits and Challenges";
 }
 
-<h1>Benefits and Challenges of Unit Testing</h1>
-<p>Unit testing ensures code quality but can be time-consuming to maintain...</p>
+<div class="container mt-5">
+    <div class="row">
+        <!-- Introduction Section -->
+        <div class="col-12 text-center mb-4">
+            <h1 class="text-white p-3 rounded" style="background-color: #106861;">Benefits and Challenges</h1>
+            <div class="mt-4">
+                <!-- Local Video Player -->
+                <video controls width="100%" style="max-width: 800px; border: 2px solid #106861; border-radius: 8px;">
+                    <source src="~/videos/m.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Section -->
+    <!-- Main Content Section -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-success" id="advantages">
+                Benefits of Unit Testing
+            </h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Early Bug Detection</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            By writing tests before or alongside code development, issues are often caught early. Unit tests act as a safety net for
+                            developers, reducing the likelihood of defects reaching production.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            In a .NET application, a bug in a method calculating discounts can be detected early if a test case checks edge cases like
+                            negative inputs or zero.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4"> Faster Development and Debugging</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests help reduce the time
+                            spent debugging by isolating problems to small, manageable parts of the
+                            code. Once an issue is detected, it’s easy to trace back to the exact line
+                            of code that caused the problem.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            A failed test in a method calculating shopping cart totals
+                            immediately points to the issue rather than requiring hours of manual
+                            debugging.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">High Code Quality</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Writing unit tests often leads to better code design.
+                            It forces developers to think about the functionality of their methods in
+                            isolation, which results in smaller, more focused methods that are easier
+                            to maintain and test.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            In a .NET application, a method designed to calculate tax
+                            separately from calculating totals promotes single responsibility and
+                            better testability.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4"> Supports Agile Development</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            In Agile development, code evolves
+                            rapidly. Unit tests provide immediate feedback, making it easier for teams
+                            to implement changes quickly without breaking existing functionality.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            A <strong>xUnit</strong> test suite helps ensure a refactored <i>OrderProcessor</i>
+                            class continues to work as intended.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Improves Team Collaboration</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests serve as a form of documentation for the expected behavior of the code. When one developer
+                            writes a test, other team members can look at the tests to understand the
+                            functionality being developed.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            A <i>CalculateTotal_WithDiscounts_AppliesCorrectly</i> test
+                            in <strong>NUnit</strong> shows exactly how discounts are expected to work.
+                        </p>
+                    </div>
+                </li>
+
+            </ul>
+            <br />
+            <h2 class="text-success" id="limitations">
+                Challenges of Unit Testing
+            </h2>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4"> Initial Investment</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Writing unit tests takes time, especially for complex or legacy code. In some cases, legacy code might require significant
+                            refactoring before it can be effectively tested. This upfront cost can be a
+                            barrier for teams that are not used to writing tests.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            In a .NET project with tightly coupled classes, significant
+                            effort may be required to refactor a class like OrderProcessor to use
+                            dependency injection, enabling unit testing with mock dependencies.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Mocking Complex Dependencies</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Sometimes unit tests require mocing complex external systems like databases, file systems, or third-party
+                            APIs. Setting up mocks and ensuring they behave like the real dependencies can be time-consuming and error-prone.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Mocking an <i>IOrderRepository</i> to simulate database interactions can require careful setup and validation using <strong>Moq</strong>.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Over-mocking</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            While mocking external dependencies is important for
+                            isolating the unit under test, over-mocking can make tests hard to maintain and may give false confidence if the mocks don’t accurately represent
+                            real-world conditions
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Excessively mocking internal logic of a service class can
+                            lead to a brittle test suite that doesn’t reflect actual application behavior.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Limited Test Coverage</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests are designed to test small portions
+                            of the code, but they might not cover the entire system. Developers need
+                            to complement unit tests with integration tests to ensure the system as a
+                            whole behaves as expected.
+
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Testing an <i>OrderProcessor</i> method does not guarantee
+                            the full order placement workflow functions correctly without integration tests.
+
+                        </p>
+                    </div>
+                </li>
+
+            </ul>
+            <br />
+            <h2 class="text-success" id="advanced">
+                Advanced Unit Testing in .NET
+            </h2>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Parameterized Tests</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            xUnit provides the [Theory] attribute for writing parameterized tests. These
+                            tests allow you to run the same logic with different input values, improving test
+                            coverage and reducing code duplication.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+public class Calculator
+{
+    public int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+public class CalculatorTests
+{
+    [Theory]
+    [InlineData(2, 3, 6)]
+    [InlineData(-1, 5, -5)]
+    [InlineData(0, 10, 0)]
+    public void Multiply_ShouldReturnCorrectProduct(int a, int b, int expected)
+    {
+        // Arrange
+        var calculator = new Calculator();
+
+        // Act
+        var result = calculator.Multiply(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+}
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4">Mocking Dependencies with Moq</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            In real-world applications, methods often depend on external services, such as databases or APIs. To isolate the unit under test, we use mocking frameworks like <strong>Moq</strong>.
+                        </p>
+                        <h5 class="mt-4 text-success">Example: Mocking a Repository</h5>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+public interface IUserRepository
+{
+    User GetUserById(int id);
+}
+
+public class UserService
+{
+    private readonly IUserRepository _repository;
+
+    public UserService(IUserRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public string GetUserName(int userId)
+    {
+        var user = _repository.GetUserById(userId);
+        return user?.Name ?? "Unknown";
+    }
+}
+
+public class UserServiceTests
+{
+    [Fact]
+    public void GetUserName_ShouldReturnCorrectName()
+    {
+        // Arrange
+        var mockRepo = new Mock<IUserRepository>();
+        mockRepo.Setup(repo => repo.GetUserById(1)).Returns(new User { Name = "John" });
+
+        var service = new UserService(mockRepo.Object);
+
+        // Act
+        var result = service.GetUserName(1);
+
+        // Assert
+        Assert.Equal("John", result);
+    }
+}
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <br />
+            <h2 class="text-success" id="conclusion">
+                Conclusion
+            </h2>
+            <p>
+                In conclusion, unit testing is a vital aspect of modern software development, regardless of the specific technology or framework being used. It ensures that individual components of a system function as expected, which enhances the overall quality of the software and supports agile development practices. By using well-established testing frameworks and adhering to best practices, developers can build reliable, maintainable, and bug-free applications. Adopting unit testing early in the development cycle not only reduces the risk of defects but also improves the ease of maintaining and evolving the codebase, ultimately contributing to the creation of high-quality software that meets user needs and stands the test of time.
+            </p>
+         </div>
+    </div>
+</div>
+<script>
+    // Function to toggle visibility of the content and change the indicator
+    function toggleContent(headerRow) {
+        const contentDiv = headerRow.nextElementSibling;
+        const indicator = headerRow.querySelector('.toggle-indicator');
+
+        if (contentDiv.style.display === "none" || contentDiv.style.display === "") {
+            contentDiv.style.display = "block";  // Show content
+            indicator.textContent = "−";  // Change indicator to minus
+        } else {
+            contentDiv.style.display = "none";  // Hide content
+            indicator.textContent = "+";  // Change indicator to plus
+        }
+    }
+</script>
+
+<style>
+
+    /* Style for the list items */
+    ul.list-group {
+        list-style: none; /* Remove default list bullets */
+        padding-left: 0; /* Remove default padding */
+    }
+
+        /* Style for the header row (only h3 and indicator) */
+        ul.list-group > li > .header-row {
+            display: flex; /* Use flexbox to align items in a row */
+            align-items: center; /* Vertically center the items */
+            cursor: pointer; /* Make it appear clickable */
+            margin-bottom: 10px; /* Add spacing between list items */
+        }
+
+            ul.list-group > li > .header-row > .toggle-indicator {
+                margin-left: auto; /* Push the indicator to the right */
+                font-size: 1.5em; /* Larger indicator */
+                color: #106861; /* Match the theme color */
+            }
+
+        /* Style for the content */
+        ul.list-group > li > .content {
+            display: none; /* Hide content by default */
+            margin-left: 40px; /* Indent content */
+            margin-top: 10px;
+        }
+
+        /* Smooth transition for the content */
+        ul.list-group > li > .content {
+            transition: all 0.3s ease-in-out; /* Adds smooth transition */
+        }
+
+    strong {
+        font-weight: bold;
+        color: #106861;
+    }
+
+    ul.custom-bullets li::marker {
+        color: #106861; /* Set the color of the bullets */
+        font-size: 1.2em; /* Optional: Adjust the size of the bullets */
+    }
+    h4{
+        color: #106861;
+    }
+
+</style>
