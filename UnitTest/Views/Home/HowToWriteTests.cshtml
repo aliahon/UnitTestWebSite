@@ -3,23 +3,283 @@
     ViewBag.Title = "How to Write Unit Tests";
 }
 
-<h2>Unit Test Guidelines</h2>
-<div class="test-guidelines">
-    <ul>
-        <li><strong>Test One Thing at a Time:</strong> Ensure each test verifies a single behavior. This makes tests easier to maintain and debug.</li>
-        <li><strong>Use Descriptive Test Names:</strong> A good unit test name should clearly indicate the expected behavior.</li>
-        <li><strong>Mock Dependencies:</strong> Isolate the unit under test by mocking or stubbing external dependencies like databases or web services.</li>
-        <li><strong>Test Edge Cases:</strong> Ensure your application can handle a wide range of inputs, including extreme and invalid values.</li>
-        <li><strong>Make Tests Repeatable and Independent:</strong> Tests should be independent of external states and give the same result each time.</li>
-        <li><strong>Keep Tests Small and Focused:</strong> Tests should focus on specific functionality and be quick to run.</li>
-    </ul>
-</div>
+<div class="container mt-5">
+    <div class="row">
+        <!-- Introduction Section -->
+        <div class="col-12 text-center mb-4">
+            <h1 class="text-white p-3 rounded" style="background-color: #106861;">How to Write Unit Tests</h1>
+            <div class="mt-4">
+                <!-- Local Video Player -->
+                <video controls width="100%" style="max-width: 800px; border: 2px solid #106861; border-radius: 8px;">
+                    <source src="~/videos/z.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Section -->
+    <!-- Main Content Section -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-success" id="best-practices">
+                How to Write Effective Unit Tests
+            </h2>
+            <p>
+                To write effective unit tests, it is essential to follow best practices that ensure
+                the tests are meaningful, maintainable, and easy to understand.<br /> .NET provides several frameworks for unit testing, such as <strong>xUnit</strong>, <strong>NUnit</strong>, and
+                <strong>MSTest</strong>. These frameworks offer features like assertions, test organization,
+                and support for mocking dependencies. Below are guidelines to write effective
+                unit tests with examples
+            </p>
 
-<h2>Example: Testing a Square Function</h2>
-<p>Here is a simple example of unit testing a method that calculates the square of a number in .NET using xUnit:</p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Test One Thing at a Time</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Each unit test should verify a single
+                            behavior. This makes tests easier to maintain and debug. By isolating
+                            each scenario, you can quickly pinpoint the cause of a failure.
 
-<div class="example-code">
-    <pre>
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            In a method that calculates the total price of a shopping
+                            cart, write separate tests to check:
+                        </p>
+                        <ul class="custom-bullets">
+                            <li>
+                                Calculating the total for items with positive prices.
+                            </li>
+                            <li>
+                                Calculating the total when there are no items in the cart (empty cart).
+                            </li>
+                            <li> Handling items with discounts or taxes</li>
+                        </ul>
+                        <p>Using <strong>xUnit</strong>:</p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    [Fact]
+    public void CalculateTotal_NoItems_ReturnsZero()
+    {
+        // Arrange
+        var processor = new OrderProcessor();
+
+        // Act
+        var result = processor.CalculateTotal(new List<decimal>());
+
+        // Assert
+        Assert.Equal(0, result);  // Verifies the total is zero for an empty cart
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Use Descriptive Test Names</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            A good unit test name should clearly indicate the expected behavior. This helps both developers and testers
+                            understand what the test is validating.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Name your tests something like CalculateTotal NoItems ReturnsZero,
+                            rather than vague names like Test1.
+                        </p>
+                        <p>Using <strong>xUnit</strong>:</p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    [Test]
+    public void CalculateTotal_NoItems_ReturnsZero()
+    {
+        // Arrange
+        var processor = new OrderProcessor();
+
+        // Act
+        var result = processor.CalculateTotal(new List<decimal>());
+
+        // Assert
+        Assert.That(result, Is.EqualTo(0));
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Mock Dependencies</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests should isolate the unit under test,
+                            which often involves mocking or stubbing external dependencies such as
+                            databases, file systems, or web services. This ensures that the unit tests
+                            are fast and do not rely on external systems.
+
+                        </p>
+                        <h5 class="mt-4 text-success">Example in .NET:</h5>
+                        <p>
+                            If a NotificationService is used within your method
+                            but you don’t want to send real emails during testing, you can mock the
+                            email-sending functionality using <strong>Moq</strong>:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    var mockNotificationService = new Mock<INotificationService>();
+    mockNotificationService.Setup(service => service.SendEmail(It.IsAny<string>()))
+        .Returns(true);
+
+    var orderProcessor = new OrderProcessor(mockNotificationService.Object);
+
+    // Act
+    orderProcessor.ProcessOrder(order);
+
+    // Assert
+    mockNotificationService.Verify(service => service.SendEmail(It.IsAny<string>()), Times.Once);
+    \end{verbatim}
+
+    \item \textbf{Test Edge Cases:}
+    Edge cases should be tested to ensure the application can handle a wide range of inputs, such as empty values, extreme values, or invalid data.
+
+    Using \textbf{xUnit}:
+    \begin{verbatim}
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(99999)]
+    public void CalculateDiscount_InvalidInputs_ThrowsException(decimal input)
+    {
+        // Arrange
+        var processor = new DiscountProcessor();
+
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => processor.CalculateDiscount(input));
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success"> Make Tests Repeatable and Independent</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Each unit test should be
+                            independent and produce the same result every time it is executed. This
+                            means you should not rely on external states, such as a particular database
+                            entry, to pass tests.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Using <strong> MSTest</strong>:
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    [TestMethod]
+    public void SaveOrder_ValidOrder_SavesSuccessfully()
+    {
+        // Arrange
+        var mockRepository = new Mock<IOrderRepository>();
+        var processor = new OrderProcessor(mockRepository.Object);
+        var order = new Order { Id = 1, Total = 100 };
+
+        // Act
+        processor.SaveOrder(order);
+
+        // Assert
+        mockRepository.Verify(repo => repo.Save(order), Times.Once);
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="list-group-item">
+                    <div class="header-row" onclick="toggleContent(this)">
+                        <h4 class="mt-4 text-success">Keep Tests Small and Focused</h4>
+                        <span class="toggle-indicator">+</span>
+                    </div>
+                    <div class="content" style="display: none;">
+                        <p>
+                            Unit tests should be quick to run
+                            and focus on specific functionality. This allows developers to run tests
+                            frequently and catch issues early.
+                        </p>
+                        <h5 class="mt-4 text-success">Example:</h5>
+                        <p>
+                            Using <strong> xUnit</strong> to focus on a specific functionality of a calculator::
+                        </p>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <pre class="bg-light rounded" style="font-size: 1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
+    [Fact]
+    public void Add_TwoPositiveNumbers_ReturnsSum()
+    {
+        // Arrange
+        var calculator = new Calculator();
+
+        // Act
+        var result = calculator.Add(2, 3);
+
+        // Assert
+        Assert.Equal(5, result);
+    }
+</code>
+            </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+            <br />
+            <p>
+                By adhering to these guidelines and leveraging .NET frameworks like xUnit, NUnit, and MSTest, you can write unit tests that are reliable, maintainable, and effective in identifying issues early in the development process.
+            </p>
+
+            <h2 class="text-success" id="examples">
+                Example of Unit Testing in .NET
+            </h2>
+            <p>
+                Here is a simple example of unit testing a method in .NET using xUnit. The method under test calculates the square of a number.
+            </p>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <pre class="bg-light p-1 rounded" style="font-size:  1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
 public class MathOperations
 {
     public int Square(int number)
@@ -27,10 +287,21 @@ public class MathOperations
         return number * number;
     }
 }
+</code>
+                    </pre>
+                </div>
+            </div>
 
+            <p>
+                The unit test class using <strong>xUnit</strong> would look like this:
+            </p>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <pre class="bg-light p-1 rounded" style="font-size:  1.1em; white-space: pre-wrap;">
+<code class="language-csharp">
 public class MathOperationsTests
 {
-    [Fact]
+    [Fact]  // Marks the method as a unit test
     public void TestSquare()
     {
         // Arrange
@@ -45,8 +316,79 @@ public class MathOperationsTests
         Assert.Equal(expectedResult, result); // Verify result is as expected
     }
 }
-        </pre>
-</div>
-
-<p>In this example, the test verifies that the Square method correctly calculates the square of the number.</p>
+</code>
+                    </pre>
+                </div>
+            </div>
+            <h5 class="mt-4 text-success">Explanation of the Test:</h5>
+            <ul class="custom-bullets">
+                <li><strong>Arrange:</strong> Set up the necessary objects and data.</li>
+                <li><strong>Act:</strong> Invoke the method to test.</li>
+                <li>
+                    <strong>Assert:</strong> Verify the outcome matches expectations.
+                </li>
+            </ul>
+        </div>
     </div>
+</div>
+<script>
+    // Function to toggle visibility of the content and change the indicator
+    function toggleContent(headerRow) {
+        const contentDiv = headerRow.nextElementSibling;
+        const indicator = headerRow.querySelector('.toggle-indicator');
+
+        if (contentDiv.style.display === "none" || contentDiv.style.display === "") {
+            contentDiv.style.display = "block";  // Show content
+            indicator.textContent = "−";  // Change indicator to minus
+        } else {
+            contentDiv.style.display = "none";  // Hide content
+            indicator.textContent = "+";  // Change indicator to plus
+        }
+    }
+</script>
+
+<style>
+
+    /* Style for the list items */
+    ul.list-group {
+        list-style: none; /* Remove default list bullets */
+        padding-left: 0; /* Remove default padding */
+    }
+
+        /* Style for the header row (only h3 and indicator) */
+        ul.list-group > li > .header-row {
+            display: flex; /* Use flexbox to align items in a row */
+            align-items: center; /* Vertically center the items */
+            cursor: pointer; /* Make it appear clickable */
+            margin-bottom: 10px; /* Add spacing between list items */
+        }
+
+            ul.list-group > li > .header-row > .toggle-indicator {
+                margin-left: auto; /* Push the indicator to the right */
+                font-size: 1.5em; /* Larger indicator */
+                color: #106861; /* Match the theme color */
+            }
+
+        /* Style for the content */
+        ul.list-group > li > .content {
+            display: none; /* Hide content by default */
+            margin-left: 40px; /* Indent content */
+            margin-top: 10px;
+        }
+
+        /* Smooth transition for the content */
+        ul.list-group > li > .content {
+            transition: all 0.3s ease-in-out; /* Adds smooth transition */
+        }
+
+        strong{
+            font-weight:bold;
+            color: #106861;
+        }
+
+    ul.custom-bullets li::marker {
+        color: #106861; /* Set the color of the bullets */
+        font-size: 1.2em; /* Optional: Adjust the size of the bullets */
+    }
+
+</style>
